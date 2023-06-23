@@ -48,7 +48,7 @@ public class Delegacao1 {
 	public void gravarAtletas()  {
 		ObjectOutputStream outputStream = null;
 		try {
-			outputStream = new ObjectOutputStream (new FileOutputStream("c:\\temp\\animais.dat"));
+			outputStream = new ObjectOutputStream (new FileOutputStream("c:\\temp\\atletas.dat"));
 			for(Atleta mani: atletas) {
 				outputStream.writeObject(mani);
 			}
@@ -70,7 +70,7 @@ public class Delegacao1 {
 	public void recuperarAtleta() {
 		ObjectInputStream inputStream = null;
 		try {
-			inputStream	= new ObjectInputStream (new FileInputStream ("c:\\temp\\animais.dat"));
+			inputStream	= new ObjectInputStream (new FileInputStream ("c:\\temp\\atletas.dat"));
 			Object obj = null;
 			while((obj = inputStream.readObject ()) != null) {
 				if (obj instanceof Corredor)

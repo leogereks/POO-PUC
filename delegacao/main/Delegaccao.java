@@ -90,11 +90,11 @@ public class Delegaccao {
 		ObjectOutputStream outputStream = null;
 		try {
 			outputStream = new ObjectOutputStream 
-					(new FileOutputStream("c:\\temp\\petStore.dados"));
+					(new FileOutputStream("c:\\temp\\atletas.dados"));
 			for (int i = 0; i < atletas.size(); i++)
 				outputStream.writeObject(atletas.get(i));
 		} catch (FileNotFoundException ex) {
-			JOptionPane.showMessageDialog(null,"Imposs�vel criar arquivo!");
+			JOptionPane.showMessageDialog(null,"Impossivel criar arquivo!");
 			ex.printStackTrace();
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -111,14 +111,14 @@ public class Delegaccao {
 	}
 
 	@SuppressWarnings("finally")
-	public ArrayList<Atleta> recuperaMamiferos (){
+	public ArrayList<Atleta> recuperaAtletas(){
 		ArrayList<Atleta> atletasTemp = new ArrayList<Atleta>();
 
 		ObjectInputStream inputStream = null;
 
 		try {	
 			inputStream = new ObjectInputStream
-					(new FileInputStream("c:\\temp\\petStore.dados"));
+					(new FileInputStream("c:\\temp\\atletas.dados"));
 			Object obj = null;
 			while ((obj = inputStream.readObject()) != null) {
 				if (obj instanceof Atleta) {
@@ -146,7 +146,7 @@ public class Delegaccao {
 		}
 	}
 
-	public void menuPetStore (){
+	public void menuAtletas(){
 
 		String menu = "";
 		String entrada;
@@ -215,7 +215,7 @@ public class Delegaccao {
 				JOptionPane.showMessageDialog(null,"Dados SALVOS com sucesso!");
 				break;
 			case 5: // Recupera Dados
-				atletas = recuperaMamiferos();
+				atletas = recuperaAtletas();
 				if (atletas.size() == 0) {
 					JOptionPane.showMessageDialog(null,"Sem dados para apresentar.");
 					break;
@@ -233,7 +233,7 @@ public class Delegaccao {
 	public static void main (String [] args){
 
 		Delegaccao pet = new Delegaccao();
-		pet.menuPetStore();
+		pet.menuAtletas();
 
 	}
 
